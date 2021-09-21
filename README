@@ -1,0 +1,51 @@
+©Butilca Rares-Dumitru
+MAIN
+The program will generate a loop that ends when the exit status reaches the    
+value 1. Each step of the loop consists of reading the command from STDIN and
+separating the raw command from the parameters(example: command = "LOAD a.in",
+raw command = "LOAD" parameter "a.in") and executing the command.The separation
+is realised with the aid of strtok which can keep in it's buffer the
+parameters.The exit status becomes 1 when the exit command is given.
+
+LOAD
+The execution of this command is separated into 2 stages:
+-reading metadata:reading the information about the construction of the map(
+such as the file format, the dimensions of the map,etc)
+-reading the map(the actual image made of pixels) : reading the values assigned
+to each pixel
+The map is dynamically allocated as a matrix of pixels.Each pixel is in fact
+a dynamically allocated vector of values(each value being the intensity of the
+component colors).The ASCII format images will be read with fscanf as
+decimal numbers,whilst the binary ones will be read as characters and assigned
+directly to an integer(the implicit conversion is favorable in this case).
+
+SELECT
+The new coordinates will be read from the strtok buffer and kept in the 
+structure of type image.This command represents both SELECT coordinates
+and SELECT ALL.
+
+ROTATE
+The rotation will be realised by rotating the area or image by 90 degrees for
+several times.In case of full image rotation the new map will be represented
+in a new location and the old one will be cleared by freeing the memory that
+contains it.In case of area rotation, the new area will be represented in a 
+statically allocated matrix and copied into the original map afterwards.
+
+CROP
+The cropped map will be represented in a new location and the old location will
+be freed.
+
+GRAYSCALE & SEPIA
+Each value will be modified according to the formula.
+
+SAVE
+This command will be executed similarly to the LOAD command.Thus,the metadata
+will be first written in the output file and then the map.The way each type of
+image was read in the LOAD command is the way it will be written into the
+output file.But, the type of the written image will be read from the second
+parameter which can be ascii or none(binary).The out file is closed right after
+the command is executed.
+
+EXIT
+The map is freed, the in file closed and the exit status turns 1.
+

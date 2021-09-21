@@ -1,4 +1,4 @@
-©Butilca Rares-Dumitru
+#Butilca Rares-Dumitru
 MAIN
 The program will generate a loop that ends when the exit status reaches the    
 value 1. Each step of the loop consists of reading the command from STDIN and

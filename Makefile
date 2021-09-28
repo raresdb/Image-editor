@@ -14,9 +14,6 @@ build: $(TARGET)
 image_editor: $(CFILES) $(HEADERS)
 	$(CC) $(CFLAGS) $(CFILES) -o $(TARGET) $(LIBFLAGS)
 
-pack:
-	zip -FSr 315CA_RaresButilca_Tema3.zip README Makefile $(CFILES) $(HEADERS)
-
 clean:
 	rm -f $(TARGET)
 

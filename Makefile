@@ -17,4 +17,4 @@ image_editor: $(CFILES) $(HEADERS)
 clean:
 	rm -f $(TARGET)
 
-.PHONY: pack clean
+.PHONY: clean
